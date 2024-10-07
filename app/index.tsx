@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import 
 
 export const CustomText = ({ children }: PropsWithChildren) => (
   <Text>{children}</Text>
@@ -7,7 +8,7 @@ export const CustomText = ({ children }: PropsWithChildren) => (
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <View>
       <CustomText>Welcome!</CustomText>
     </View>
   );
