@@ -1,18 +1,12 @@
-import "@tamagui/core/reset.css";
+import { config } from "@tamagui/config/v3";
+import { createTamagui } from "tamagui";
 
-import { TamaguiProvider, createTamagui } from "tamagui";
+export const tamaguiConfig = createTamagui(config);
 
-// some nice defaults:
-import { config } from "@tamagui/config/v2";
+export default tamaguiConfig;
 
-// you usually export this from a tamagui.config.ts file:
-// this can be as simple as an empty object
-const tamaguiConfig = createTamagui(config);
+export type Conf = typeof tamaguiConfig;
 
-// this makes typescript properly type everything based on the config
-type Conf = typeof tamaguiConfig;
 declare module "tamagui" {
   interface TamaguiCustomConfig extends Conf {}
 }
-
-export default tamaguiConfig;
