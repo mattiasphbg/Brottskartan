@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Platform } from "react-native";
 import { View, Text, Button } from "tamagui";
 
-//
+
 export default function HomeScreen() {
   return (
     <View margin={10}>
