@@ -1,30 +1,10 @@
 import { Image, StyleSheet, Platform } from "react-native";
-import { View, Text, Button } from "tamagui";
-
+import { View, Text } from "tamagui";
 
 export default function HomeScreen() {
   return (
     <View margin={10}>
-      <Text color="$color">Hello</Text>
+      <Text className="">Hello</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});

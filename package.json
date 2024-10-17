@@ -18,6 +18,7 @@
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
+    "@tamagui/babel-plugin": "^1.115.5",
     "@tamagui/config": "^1.112.22",
     "@testing-library/react-native": "^12.7.2",
     "expo": "^51.0.37",
