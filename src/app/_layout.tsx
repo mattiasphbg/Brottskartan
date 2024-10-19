@@ -1,4 +1,4 @@
-import "../global.css";
+import "src/global.css";
 
 import {
   DarkTheme,
@@ -12,14 +12,14 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-import { PaperProvider } from "react-native-paper";
+import { GluestackUIProvider } from "../components/ui/gluestack-ui-provider";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded, error] = useFonts({
-    Inter: require("../assets/fonts/Inter-Regular.ttf"),
+    Inter: require("../../assets/fonts/Inter-Regular.ttf"),
   });
 
   useEffect(() => {
@@ -33,13 +33,13 @@ export default function RootLayout() {
   }
 
   return (
-    <PaperProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <GluestackUIProvider>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>
-      </ThemeProvider>
-    </PaperProvider>
+      </GluestackUIProvider>
+    </ThemeProvider>
   );
 }
