@@ -9,6 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+# Bun
+bun.lockb
 
 # macOS
 .DS_Store
