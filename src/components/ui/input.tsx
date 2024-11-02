@@ -71,7 +71,7 @@ const PrimitiveIcon = React.forwardRef<
     );
   }
 );
-///
+
 
 const InputWrapper = React.forwardRef<
   React.ElementRef<typeof View>,
