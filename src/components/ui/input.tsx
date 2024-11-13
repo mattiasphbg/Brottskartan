@@ -79,7 +79,7 @@ const InputWrapper = React.forwardRef<
 >(({ ...props }, ref) => {
   return <View {...props} ref={ref} />;
 });
-// 
+
 const UIInput = createInput({
   // @ts-ignore
   Root:
