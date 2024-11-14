@@ -1,19 +1,4 @@
 import React, { createContext, useMemo, useContext } from "react";
-import { config } from "./config";
-import {
-  ColorSchemeName,
-  useColorScheme,
-  View,
-  ViewProps,
-  Text,
-} from "react-native";
-import { OverlayProvider } from "@gluestack-ui/overlay";
-import { ToastProvider } from "@gluestack-ui/toast";
-
-import { useColorScheme as colorSchemeNW } from "nativewind";
-
-type ModeType = "light" | "dark" | "system";
-
 import {
   Table as ExpoTable,
   THead as ExpoTHead,
@@ -31,7 +16,8 @@ import {
   tableRowStyleStyle,
   tableDataStyle,
   tableCaptionStyle,
-} from "../styles";
+} from "./styles";
+import { Text, View } from "react-native";
 
 const TableHeaderContext = createContext<any>({});
 const TableFooterContext = createContext<any>({});
@@ -212,44 +198,3 @@ export {
   TableData,
   TableCaption,
 };
-
-const getColorSchemeName = (
-  colorScheme: ColorSchemeName,
-  mode: ModeType
-): "light" | "dark" => {
-  if (mode === "system") {
-    return colorScheme ?? "light";
-  }
-  return mode;
-};
-
-export function GluestackUIProvider({
-  mode = "light",
-  ...props
-}: {
-  mode?: "light" | "dark" | "system";
-  children?: React.ReactNode;
-  style?: ViewProps["style"];
-}) {
-  const colorScheme = useColorScheme();
-  const { setColorScheme, colorScheme: nativeWindColorScheme } =
-    colorSchemeNW();
-
-  const colorSchemeName = getColorSchemeName(colorScheme, mode);
-
-  setColorScheme(mode); // Use setColorScheme instead of set
-
-  return (
-    <View
-      style={[
-        config[colorSchemeName],
-        { flex: 1, height: "100%", width: "100%" },
-        props.style,
-      ]}
-    >
-      <OverlayProvider>
-        <ToastProvider>{props.children}</ToastProvider>
-      </OverlayProvider>
-    </View>
-  );
-}

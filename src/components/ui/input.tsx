@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo } from "react";
 import { createInput } from "@gluestack-ui/input";
-import { Svg } from "react-native-svg";
+import Svg from "react-native-svg";
 import { View, Pressable, TextInput, Platform } from "react-native";
 import { tva } from "@gluestack-ui/nativewind-utils/tva";
 import {
@@ -72,7 +72,6 @@ const PrimitiveIcon = React.forwardRef<
   }
 );
 
-//
 const InputWrapper = React.forwardRef<
   React.ElementRef<typeof View>,
   React.ComponentProps<typeof View>
