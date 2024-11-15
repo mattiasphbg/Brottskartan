@@ -144,3 +144,40 @@ export const tableDataStyle = tva({
 export const tableCaptionStyle = tva({
   base: `${captionTableStyle} px-6 py-[14px] text-[16px] font-normal leading-[22px] text-typography-800 bg-background-50 font-roboto`,
 });
+
+const baseStyleBox = isWeb
+  ? "flex flex-col relative z-0 box-border border-0 list-none min-w-0 min-h-0 bg-transparent items-stretch m-0 p-0 text-decoration-none"
+  : "";
+
+export const boxStyle = tva({
+  base: baseStyleBox,
+});
+
+const baseStyleCenter = isWeb ? "flex flex-col relative z-0" : "";
+
+export const centerStyle = tva({
+  base: `justify-center items-center ${baseStyleCenter}`,
+});
+
+const baseStyleHstack = isWeb
+  ? "flex relative z-0 box-border border-0 list-none min-w-0 min-h-0 bg-transparent items-stretch m-0 p-0 text-decoration-none"
+  : "";
+
+export const hstackStyle = tva({
+  base: `flex-row ${baseStyleHstack}`,
+  variants: {
+    space: {
+      xs: "gap-1",
+      sm: "gap-2",
+      md: "gap-3",
+      lg: "gap-4",
+      xl: "gap-5",
+      "2xl": "gap-6",
+      "3xl": "gap-7",
+      "4xl": "gap-8",
+    },
+    reversed: {
+      true: "flex-row-reverse",
+    },
+  },
+});
