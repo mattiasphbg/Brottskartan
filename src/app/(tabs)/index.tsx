@@ -1,5 +1,5 @@
 import * as React from "react";
-
+//
 import { View } from "react-native";
 import { Text } from "src/src/components/ui/Text";
 import { Heading } from "src/src/components/ui/Heading";
@@ -35,17 +35,14 @@ export default function HomeScreen() {
         Home Screen
       </Heading>
       <MapView style={{ width: "100%", height: "100%" }}>
-        {markers.map((marker) => (
-          <Marker
-            key={marker.id}
-            coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude,
-            }}
-            title={marker.title}
-            description={marker.description}
-          />
-        ))}
+        <Marker
+          coordinate={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+          }}
+          title="Marker 1"
+          description="Description for Marker 1"
+        />
       </MapView>
     </View>
   );
