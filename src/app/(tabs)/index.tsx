@@ -1,9 +1,9 @@
 import * as React from "react";
-//
 import { View } from "react-native";
 import { Text } from "src/src/components/ui/Text";
 import { Heading } from "src/src/components/ui/Heading";
 import MapView, { Marker } from "react-native-maps";
+
 export default function HomeScreen() {
   const markers = [
     {
@@ -30,19 +30,27 @@ export default function HomeScreen() {
   ];
 
   return (
-    <View>
-      <Heading className="text-typography-700 font-body text-2xl">
-        Home Screen
-      </Heading>
-      <MapView style={{ width: "100%", height: "100%" }}>
-        <Marker
-          coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-          }}
-          title="Marker 1"
-          description="Description for Marker 1"
-        />
+    <View style={{ flex: 1 }}>
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={{
+          latitude: 37.7749, // Center around San Francisco
+          longitude: -122.4194,
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
+        }}
+      >
+        {markers.map((marker) => (
+          <Marker
+            key={marker.id}
+            coordinate={{
+              latitude: marker.latitude,
+              longitude: marker.longitude,
+            }}
+            title={marker.title}
+            description={marker.description}
+          />
+        ))}
       </MapView>
     </View>
   );
