@@ -7,7 +7,7 @@ import {
 } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { useColorScheme } from "react-native";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -32,14 +32,17 @@ export default function RootLayout() {
     return null;
   }
 
+  const queryClient = new QueryClient();
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <GluestackUIProvider>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-        </Stack>
-      </GluestackUIProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <GluestackUIProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          </Stack>
+        </GluestackUIProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
