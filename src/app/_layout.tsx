@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-
+//
 import { GluestackUIProvider } from "../components/ui/gluestack-ui-provider";
 
 SplashScreen.preventAutoHideAsync();
