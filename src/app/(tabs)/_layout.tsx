@@ -32,10 +32,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="listOfCrimes"
         options={{
-          title: "listOfCrimes",
+          title: "Crimes",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
+              name={focused ? "list-circle-outline" : "list-circle"}
               color={color}
             />
           ),

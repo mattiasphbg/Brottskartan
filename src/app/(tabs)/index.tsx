@@ -1,7 +1,6 @@
 import * as React from "react";
 import { View } from "react-native";
-import { Text } from "src/src/components/ui/Text";
-import { Heading } from "src/src/components/ui/Heading";
+
 import MapView, { Marker } from "react-native-maps";
 
 export default function HomeScreen() {
@@ -32,9 +31,14 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1 }}>
       <MapView
-        style={{ flex: 1 }}
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#F5FCFF",
+        }}
         initialRegion={{
-          latitude: 37.7749, // Center around San Francisco
+          latitude: 37.7749,
           longitude: -122.4194,
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
@@ -43,6 +47,13 @@ export default function HomeScreen() {
         {markers.map((marker) => (
           <Marker
             key={marker.id}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
             coordinate={{
               latitude: marker.latitude,
               longitude: marker.longitude,
