@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { useQuery } from "@tanstack/react-query";
 
 import {
   Table,
@@ -13,55 +12,32 @@ import {
   TableCaption,
 } from "src/src/components/ui/table";
 
-// Type for our crime data
-interface Crime {
-  name: string;
-  summary: number;
-  amount: number;
-  location: string;
-}
-
-// Function to fetch crimes data
-const fetchCrimes = async (endpoint = "crimes"): Promise<Crime[]> => {
-  const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000";
-  const response = await fetch(`${API_URL}/api/${endpoint}`);
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
-};
-
 export default function ListOfCrimes() {
-  const {
-    data: crimes,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["crimes", "all"],
-    queryFn: () => fetchCrimes("crimes"),
-  });
+  const dummyData = [
+    {
+      name: "Theft",
+      summary: 12,
+      amount: 1500,
+      location: "Downtown",
+    },
+    {
+      name: "Vandalism",
+      summary: 8,
+      amount: 800,
+      location: "Park Area",
+    },
+    {
+      name: "Burglary",
+      summary: 5,
+      amount: 3000,
+      location: "Residential Area",
+    },
+  ];
 
-  if (isLoading)
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
-  if (error)
-    return (
-      <View>
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
-
-  // Calculate totals
-  const totals = crimes?.reduce(
-    (acc, crime) => ({
-      summary: acc.summary + crime.summary,
-      amount: acc.amount + crime.amount,
-    }),
-    { summary: 0, amount: 0 }
-  );
+  const dummyTotals = {
+    summary: 25,
+    amount: 5300,
+  };
 
   return (
     <View>
@@ -75,7 +51,7 @@ export default function ListOfCrimes() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {crimes?.map((crime, index) => (
+          {dummyData.map((crime, index) => (
             <TableRow key={index}>
               <TableData>{crime.name}</TableData>
               <TableData>{crime.summary}</TableData>
@@ -87,8 +63,8 @@ export default function ListOfCrimes() {
         <TableFooter>
           <TableRow>
             <TableHead>Total</TableHead>
-            <TableHead>{totals?.summary}</TableHead>
-            <TableHead>${totals?.amount}</TableHead>
+            <TableHead>{dummyTotals.summary}</TableHead>
+            <TableHead>${dummyTotals.amount}</TableHead>
           </TableRow>
         </TableFooter>
       </Table>
