@@ -7,6 +7,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -20,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.Brottskartan"
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +34,7 @@
       [
         "expo-font",
         {
-          "fonts": ["/assets/fonts/Inter.ttf"]
+          "fonts": ["./assets/fonts/Inter.ttf"]
         }
       ]
     ],
