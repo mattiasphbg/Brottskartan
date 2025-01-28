@@ -19,7 +19,7 @@ import {
   Platform,
 } from "react-native";
 import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-///
+
 const SCOPE = "BUTTON";
 const ButtonWrapper = React.forwardRef<
   React.ElementRef<typeof Pressable>,
