@@ -10,7 +10,7 @@ import {
   TableData,
   TableRow,
   TableCaption,
-} from "src/src/components/ui/table";
+} from "src/components/ui/table";
 
 export default function ListOfCrimes() {
   const dummyData = [

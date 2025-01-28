@@ -1,12 +1,10 @@
 import * as React from "react";
 import { View } from "react-native";
-import { Select } from "src/components/ui/select";
 
 import { useQuery } from "@tanstack/react-query";
 
 import MapView, { Marker } from "react-native-maps";
 import useFetchCrimes from "src/hooks/useCrimes";
-
 export default function HomeScreen() {
   const markers = [
     {
@@ -32,11 +30,7 @@ export default function HomeScreen() {
     },
   ];
 
-  const {
-    data: crimes,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: crimes } = useQuery({
     queryKey: ["crimes"],
     queryFn: () => useFetchCrimes("locationname=Helsingborg"),
   });
