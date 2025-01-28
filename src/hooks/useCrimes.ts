@@ -7,22 +7,25 @@ interface Crime {
   location: string;
 }
 
-const fetchCrimes = async (endpoint = "crimes"): Promise<Crime[]> => {
-  const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000";
-  const response = await fetch(`${API_URL}/api/${endpoint}`);
+export const useFetchCrimes = async (
+  endpoint = "locationname=Stockholm"
+): Promise<Crime[]> => {
+  const response = await fetch(`https://polisen.se/api/events?${endpoint}`);
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
   return response.json();
 };
 
-export default function ListOfCrimes() {
+export default function UseCrimes() {
   const {
     data: crimes,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["crimes", "all"],
-    queryFn: () => fetchCrimes("crimes"),
+    queryKey: ["crimes", "Stockholm"],
+    queryFn: () => useFetchCrimes(),
   });
+
+  return { crimes, isLoading, error };
 }

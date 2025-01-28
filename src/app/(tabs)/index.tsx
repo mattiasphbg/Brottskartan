@@ -2,6 +2,7 @@ import * as React from "react";
 import { View } from "react-native";
 
 import MapView, { Marker } from "react-native-maps";
+import UseCrimes from "src/src/hooks/useCrimes";
 
 export default function HomeScreen() {
   const markers = [
@@ -27,7 +28,8 @@ export default function HomeScreen() {
       description: "Description for Marker 3",
     },
   ];
-
+  const crimes = UseCrimes();
+  console.log("crimes", crimes);
   return (
     <View style={{ flex: 1 }}>
       <MapView
