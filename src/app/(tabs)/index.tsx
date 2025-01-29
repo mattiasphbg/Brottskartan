@@ -35,7 +35,6 @@ export default function HomeScreen() {
     queryFn: () => useFetchCrimes("locationname=Helsingborg"),
   });
 
-  console.log("crimes", crimes);
   return (
     <View style={{ flex: 1 }}>
       <MapView
@@ -52,7 +51,7 @@ export default function HomeScreen() {
           longitudeDelta: 0.1,
         }}
       >
-        {markers.map((marker) => (
+        {crimes?.map((marker) => (
           <Marker
             key={marker.id}
             style={{
@@ -60,14 +59,15 @@ export default function HomeScreen() {
               top: 0,
               left: 0,
               right: 0,
+
               bottom: 0,
             }}
             coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude,
+              latitude: Number(marker.location.gps.split(",")[0]),
+              longitude: Number(marker.location.gps.split(",")[1]),
             }}
-            title={marker.title}
-            description={marker.description}
+            title={marker.name}
+            description={marker.summary}
           />
         ))}
       </MapView>

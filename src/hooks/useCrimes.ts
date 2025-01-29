@@ -1,9 +1,12 @@
-interface Crime {
+type Crime = {
+  id: string;
   name: string;
-  summary: number;
+  summary: string;
   amount: number;
-  location: string;
-}
+  location: {
+    gps: string;
+  };
+};
 
 export default async function useFetchCrimes(
   endpoint: string
@@ -14,16 +17,3 @@ export default async function useFetchCrimes(
   }
   return response.json();
 }
-
-// export default function UseCrimes() {
-//   const {
-//     data: crimes,
-//     isLoading,
-//     error,
-//   } = useQuery({
-//     queryKey: ["crimes", "Stockholm"],
-//     queryFn: () => useFetchCrimes(),
-//   });
-
-//   return { crimes, isLoading, error };
-// }
