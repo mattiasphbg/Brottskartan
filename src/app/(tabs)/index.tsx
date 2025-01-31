@@ -34,7 +34,7 @@ export default function HomeScreen() {
     queryKey: ["crimes"],
     queryFn: () => useFetchCrimes("locationname=Helsingborg"),
   });
-  ///
+
   return (
     <View style={{ flex: 1 }}>
       <MapView
